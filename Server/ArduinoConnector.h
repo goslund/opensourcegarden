@@ -156,16 +156,16 @@ public:
 
 					std::cout << "state parse message: \"" <<  *it << "\"" << std::endl;
 					// std::cout << "Compare: " << ((string) "ACK").compare(*it) << std::endl;
-					std::cout << "Compare: " << (((string) "ACK") == (*it)) << std::endl;
+					// std::cout << "Compare: " << (((string) "ACK") == (*it)) << std::endl;
 
-					 if( (((string) "ACK") == (*it)) == 0) {
-						//acknowledged, get a status report (turn on led for now)
-						//std::cout << *it << std::endl;
-						connection->sendMessage("OSG/1.0:COMMAND:NEOPIXEL:1:ON:255:255:255\n\0");
-						connection->sendMessage("OSG/1.0:COMMAND:NEOPIXEL:1:ON:255:128:128\n\0");
-					}
+					//  if( (((string) "ACK") == (*it)) == 0) {
+					// 	//acknowledged, get a status report (turn on led for now)
+					// 	//std::cout << *it << std::endl;
+					// 	connection->sendMessage("OSG/1.0:COMMAND:NEOPIXEL:1:ON:255:255:255\n\0");
+					// 	connection->sendMessage("OSG/1.0:COMMAND:NEOPIXEL:1:ON:255:128:128\n\0");
+					// }
 
-					current_cmd = string("");
+					// current_cmd = string("");
 					state = STATE_CONNECTED;
 				}
 				break;

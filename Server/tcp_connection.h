@@ -7,7 +7,7 @@
 #include <boost/shared_ptr.hpp>
 #include <boost/enable_shared_from_this.hpp>
 #include <boost/asio.hpp>
-
+#include <string.h>
 #include "tcp_connection.h"
 
 
@@ -40,7 +40,7 @@ public:
 
 
 
-  string receive_command()
+  std::string receive_command()
   {
     
     
@@ -81,17 +81,17 @@ public:
     return response;
   }
 
-  void ack_command_received(string sendstr) {
+  void ack_command_received(std::string sendstr) {
     boost::asio::streambuf outstream;
     std::ostream os(&outstream);
     
     if (sendstr.compare("exit") == 0) {
-      os << "You are exiting, I'll wait for a new connection. Goodbye!" << endl;
+      os << "You are exiting, I'll wait for a new connection. Goodbye!" << std::endl;
     } else {
 
     }
 
-    os << sendstr << endl;
+    os << sendstr << std::endl;
     size_t n2 = socket_.send(outstream.data());
     outstream.consume(n2);
   }

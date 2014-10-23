@@ -4,9 +4,9 @@
 #include <boost/asio.hpp>
 #include <boost/thread.hpp>
 #include "tcp_connection.h"
-#include "ArduinoConnector.h"
+
 #include <stdio.h>
-using namespace std;
+//using namespace std;
 class tcp_server
 {
 public:
@@ -40,12 +40,12 @@ private:
   {
     try {
 
-
+      new_connection->sendMessage("Hello World...");
       if (!error)
       {
         std::cout << "graph goes here" << std::endl;
-        ArduinoConnector* connector = new ArduinoConnector(new_connection);
-        boost::thread t(boost::bind(&ArduinoConnector::loop, connector));
+        // ArduinoConnector* connector = new ArduinoConnector(new_connection);
+        // boost::thread t(boost::bind(&ArduinoConnector::loop, connector));
         std::cout << "thread started for ArduinoConnector" << std::endl;
       }
       start_accept();

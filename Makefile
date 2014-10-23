@@ -5,11 +5,11 @@ INCLUDES = -I/usr/local/include \
 -INeopixel \
 -IArduino \
 -I/usr/include/cppconn \
-
+-I/usr/include/boost
 
 #Arduino/ArduinosController.cpp
 #Arduino/ProgramController.cpp
 
 all:
-	g++ main.cpp  $(INCLUDES) -lboost_thread-mt  -lboost_date_time -lboost_filesystem -lboost_system -lpthread   -L/usr/local/lib -L/usr/lib -lyaml-cpp -lserial  -o $(TARGET) 
+	g++ main.cpp  $(INCLUDES) -lboost_thread  -lboost_date_time -lboost_filesystem -lboost_system -lpthread  -L/usr/include -L/usr/local/lib -L/usr/lib -lyaml-cpp -o $(TARGET) 
 
