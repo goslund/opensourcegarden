@@ -1,0 +1,4 @@
+#ifndef BASEPROGRAM_H
+#define BASEPROGRAM_H
+
+#endif /* BASEPROGRAM_H */

@@ -1,0 +1,5 @@
+config:
+  hostname: "tcp://127.0.0.1:3306"
+  database: 'osgdata'
+  username: 'osgdata'
+  password: 'osgdatapw'
