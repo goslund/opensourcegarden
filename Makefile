@@ -7,9 +7,13 @@ INCLUDES = -I/usr/local/include \
 -I/usr/include/cppconn \
 -I/usr/include/boost
 
+CPPFILES = \
+*.cpp \
+Server/*.cpp
+
 #Arduino/ArduinosController.cpp
 #Arduino/ProgramController.cpp
 
 all:
-	g++ main.cpp  $(INCLUDES) -lboost_thread  -lboost_date_time -lboost_filesystem -lboost_system -lpthread  -L/usr/include -L/usr/local/lib -L/usr/lib -lyaml-cpp -o $(TARGET) 
+	g++ $(CPPFILES)  $(INCLUDES) -lboost_thread  -lboost_date_time -lboost_filesystem -lboost_system -lpthread  -L/usr/include -L/usr/local/lib -L/usr/lib -lyaml-cpp -o $(TARGET) 
 

@@ -27,8 +27,29 @@ private:
 	void start_accept() {
 	new_connection = WebClientConnection::create(acceptor_.get_io_service());
 
-
+	acceptor_.async_accept(new_connection->socket(),
+        boost::bind(&WebClientServer::handle_accept, this, new_connection,
+          boost::asio::placeholders::error));
+    
 	}
+
+	void handle_accept(WebClientConnection::pointer new_connection,
+      const boost::system::error_code& error)
+	  {
+	    try {
+	      	new_connection->sendMessage("Hello World...");
+	      	if (!error)
+	      	{
+		        std::cout << "graph goes here" << std::endl;
+		        // ArduinoConnector* connector = new ArduinoConnector(new_connection);
+		        // boost::thread t(boost::bind(&ArduinoConnector::loop, connector));
+	        	std::cout << "thread started for ArduinoConnector" << std::endl;
+	      	}
+	      	start_accept();
+	    } catch (const std::exception& e) {
+	        std::cout << "hwstr" << e.what() << std::endl;
+	    }
+	 }
 
 };
 
